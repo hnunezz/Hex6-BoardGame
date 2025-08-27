@@ -1,0 +1,95 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  section {
+    background: #1c2634;
+    box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
+
+    border-radius: 8px;
+    gap: 32px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+
+    width: 80%;
+    max-width: 350px;
+
+    h1 {
+      margin: 0;
+
+      b {
+        color: #b08cff;
+      }
+    }
+
+    button {
+      border-radius: 8px;
+      border-color: #b08cff;
+      background: #b08cff;
+      height: 60px;
+      font-size: 24px;
+      color: white;
+      font-weight: 600;
+      border: 1px solid #b08cff;
+      transition: ease-out 0.3s;
+      cursor: pointer;
+      width: 100%;
+
+      &:hover {
+        transition: ease-in 0.3s;
+        background-color: transparent;
+        color: #b08cff;
+      }
+    }
+  }
+}
+
+.difficulty-slider {
+  width: 100%;
+  text-align: center;
+
+  &.Fácil {
+    strong {
+      color: #7cb518;
+    }
+    // input[type="range"] {
+    //   accent-color: #7cb518;
+    // }
+  }
+  &.Médio {
+    strong {
+      color: #f3de2c;
+    }
+    // input[type="range"] {
+    //   accent-color: #f3de2c;
+    // }
+  }
+  &.Difícil {
+    strong {
+      color: #fe6666;
+    }
+    // input[type="range"] {
+      // accent-color: #fe6666;
+    // }
+  }
+
+  .slider {
+    width: 100%;
+    margin: 20px 0;
+    height: 4px;
+  }
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

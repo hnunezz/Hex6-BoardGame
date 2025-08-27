@@ -1,0 +1,27 @@
+.hex {
+  path {
+    transition: ease-out .3s;
+  }
+  &:hover:not(.actv) {
+    path {
+      transition: ease 0.3s;
+      fill: transparent;
+    }
+  }
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #0d1321;
+  touch-action: none;
+  user-select: none;
+  transition: ease-out 0.3s;
+  opacity: 1s;
+
+  &.gameover {
+    transition: ease 0.3s;
+    opacity: 0.6;
+  }
+}

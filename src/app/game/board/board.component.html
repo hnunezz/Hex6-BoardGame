@@ -1,0 +1,22 @@
+<svg [attr.viewBox]="viewBox()" (click)="onSvgClick($event)" [ngClass]="{'gameover': phase() === 'gameover'}">
+  <g [attr.transform]="'translate(' + offsetX() + ',' + offsetY() + ')'">
+    @for (cell of cells(); track $index) {
+    <g class="hex" [ngClass]="{'actv': !cell || cell.stackColor}" [attr.transform]="'translate(' + cell.x + ',' + cell.y + ')'" style="cursor: pointer;">
+      <path
+        [attr.d]="hexPath"
+        [attr.fill]="cell.fill"
+        [attr.stroke]="cell.stroke"
+        [attr.stroke-width]="1.5"
+        [attr.opacity]="cell.opacity">
+      </path>
+      <text
+        text-anchor="middle"
+        dominant-baseline="middle"
+        [attr.fill]="'#ffffff'"
+        [attr.style]="'font: 600 12px'">
+        {{cell.label}}
+      </text>
+    </g>
+    }
+  </g>
+</svg>

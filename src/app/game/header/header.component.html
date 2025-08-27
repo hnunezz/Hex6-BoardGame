@@ -1,0 +1,15 @@
+<aside [ngClass]="{'gameover': store.state().phase === 'gameover'}">
+  <h2 style="margin-top:0">Score: <b [style.color]="'#b08cff'">{{store.score()}}</b></h2>
+  @if (store.state().phase !== 'gameover') {
+  <p>
+    Peça atual:
+    <svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M33.8203 10.5771V29.4219L17.5 38.8447L1.17969 29.4219V10.5771L17.5 1.1543L33.8203 10.5771Z"
+        [attr.fill]="fillColor()" stroke="#1D2D44" stroke-width="2" />
+    </svg>
+  </p>
+  } @else {
+  <p style="color:#ff6666;padding-bottom: 10px;">Fim de jogo! <br /> Sem mais espaços disponíveis. 😢</p>
+  <button (click)="resetGameChange.emit()">Reiniciar jogo</button>
+  }
+</aside>
