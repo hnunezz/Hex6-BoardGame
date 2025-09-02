@@ -38,7 +38,8 @@ export class GameComponent implements OnInit {
   }
 
   nextRandomPiece() {
-    const colors: string[] = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+    // const colors: string[] = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+    const colors: string[] = ['red', 'blue', 'green', 'yellow'];
     this.pendingColor.set(colors[Math.floor(Math.random() * colors.length)]);
   }
 
