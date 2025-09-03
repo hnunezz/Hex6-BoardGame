@@ -66,6 +66,20 @@ aside {
       color: #fe6666;
     }
   }
+
+  .change-diff {
+    background-color: #b08cff;
+    border-color: #b08cff;
+    &:hover{
+      color: #b08cff;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -76,7 +90,6 @@ aside {
       transform: scale(1);
       transition: ease-in 0.3s;
       height: auto;
-      height: 250px;
       top: 10px;
       right: 10px;
       justify-content: space-between;

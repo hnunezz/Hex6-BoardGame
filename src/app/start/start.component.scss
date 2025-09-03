@@ -52,44 +52,67 @@ main {
 .difficulty-slider {
   width: 100%;
   text-align: center;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
 
-  &.Fácil {
-    strong {
-      color: #7cb518;
-    }
-    // input[type="range"] {
-    //   accent-color: #7cb518;
-    // }
-  }
-  &.Médio {
-    strong {
-      color: #f3de2c;
-    }
-    // input[type="range"] {
-    //   accent-color: #f3de2c;
-    // }
-  }
-  &.Difícil {
-    strong {
-      color: #fe6666;
-    }
-    // input[type="range"] {
-      // accent-color: #fe6666;
-    // }
+  .difficulty {
+    font-weight: 600;
   }
 
-  .slider {
-    width: 100%;
-    margin: 20px 0;
-    height: 4px;
-  }
-
-  .labels {
+  .difficulties {
     display: flex;
-    justify-content: space-between;
+    button {
+      height: 40px;
+      font-size: 16px;
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.559);
+      color: white !important;
+      &:nth-child(1) {
+        border-radius: 8px 0px 0px 8px;
+      }
+      &:nth-child(2) {
+        border-radius: 0;
+      }
+      &:nth-child(3) {
+        border-radius: 0px 8px 8px 0px;
+      }
 
-    span {
-      font-weight: bold;
+      &.Fácil {
+        &:hover {
+          transition: ease-in 0.3s;
+          border-color: #7cb518;
+          background-color: #7cb518;
+        }
+        &.active {
+          border-color: #7cb518;
+          background-color: #7cb518;
+        }
+      }
+
+      &.Médio {
+        &:hover {
+          transition: ease-in 0.3s;
+          border-color: #d2c345;
+          background-color: #d2c345;
+        }
+        &.active {
+          border-color: #d2c345;
+          background-color: #d2c345;
+        }
+      }
+
+      &.Difícil {
+        &:hover {
+          transition: ease-in 0.3s;
+          border-color: #fe6666;
+          background-color: #fe6666;
+        }
+        &.active {
+          border-color: #fe6666;
+          background-color: #fe6666;
+        }
+      }
     }
   }
 }

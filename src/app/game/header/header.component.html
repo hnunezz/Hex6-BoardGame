@@ -9,7 +9,28 @@
     </svg>
   </p>
   } @else {
-  <p style="color:#ff6666;padding-bottom: 10px;">Fim de jogo! <br /> Sem mais espaços disponíveis. 😢</p>
-  <button (click)="resetGameChange.emit()">Reiniciar jogo</button>
+  <p style="color:#ff6666">Fim de jogo! <br /> Sem mais espaços disponíveis. 😢</p>
+  <p style="color:#ffffff;padding-bottom: 10px;">Dificuldade: <b>{{difficultyLabel}}</b></p>
+  <div class="actions">
+    <button (click)="resetGameChange.emit()">Reiniciar jogo</button>
+    <button class="change-diff" (click)="changeDiff()">Trocar dificuldade</button>
+  </div>
   }
 </aside>
+
+Doka
+Let
+Nicoly
+Diogo
+Teteu
+Luskinha
+Allan
+Gabriel
+Isa
+Cords
+Mina do Cords
+Luiz
+Mina do Luiz
+Japa
+Bruna
+Meira

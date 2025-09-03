@@ -1,9 +1,10 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { BoardComponent } from './board/board.component';
 import { GameStore } from './store/game-store';
 import { colorToFill } from './hex-utils';
 import { Axial, Color, makeCellId } from './type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -24,8 +25,11 @@ import { Axial, Color, makeCellId } from './type';
     </div>
   `,
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
+  private router = inject(Router);
   store = inject(GameStore);
+
+  private difficulty = '';
   pendingColor = signal('red');
 
   fillColor = computed(() => {
@@ -33,13 +37,35 @@ export class GameComponent implements OnInit {
   })
 
   ngOnInit() {
+    if (localStorage.getItem("GAME-DIFF") === null) {
+      this.router.navigate(["/"]);
+      return;
+    }
+
+    this.difficulty = localStorage.getItem("GAME-DIFF") as string;
+
     this.store.init(3);
     this.nextRandomPiece();
   }
 
+  ngOnDestroy(): void {
+    localStorage.clear();
+  }
+
   nextRandomPiece() {
-    // const colors: string[] = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-    const colors: string[] = ['red', 'blue', 'green', 'yellow'];
+    let colors: string[] = []
+    switch (this.difficulty) {
+      case "0":
+        colors = ['red', 'blue', 'green', 'yellow']
+        break;
+      case "1":
+        colors = ['red', 'blue', 'green', 'yellow', 'purple']
+        break;
+      case "2":
+        colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+        break;
+    }
+
     this.pendingColor.set(colors[Math.floor(Math.random() * colors.length)]);
   }
 
@@ -55,6 +81,11 @@ export class GameComponent implements OnInit {
   }
 
   resetGame() {
+    if (localStorage.getItem("GAME-DIFF") === null) {
+      this.router.navigate(["/"]);
+      return;
+    }
+
     this.store.resetGame(3);
     this.nextRandomPiece();
   }

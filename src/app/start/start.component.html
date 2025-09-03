@@ -1,16 +1,15 @@
 <main>
   <section>
     <h1>Hex<b>6</b> BoardGame</h1>
-    <div class="difficulty-slider {{difficultyLabel}}">
-      <label for="difficulty">Dificuldade selecionada: <strong>{{ difficultyLabel }}</strong></label>
+    <div class="difficulty-slider">
+      <strong>Selecione a dificuldade</strong>
 
-      <input id="difficulty" type="range" min="0" max="2" step="1" class="slider" [(ngModel)]="difficulty"
-        (input)="updateDifficulty(difficulty)" />
-
-      <div class="labels">
-        <span [style.color]="'#7cb518'">Fácil</span>
-        <span [style.color]="'#f3de2c'">Médio</span>
-        <span [style.color]="'#fe6666'">Difícil</span>
+      <div class="difficulties">
+        @for (diff of difficulties; track $index) {
+          <button [class]="diff.label" [ngClass]="{'active': difficulty === diff.value}" (click)="updateDifficulty(diff.value)">
+            <span>{{diff.label}}</span>
+          </button>
+        }
       </div>
     </div>
     <button (click)="startGame()">
